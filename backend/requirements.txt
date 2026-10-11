@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+llama-cpp-python
+chromadb
+tree-sitter-languages
+sentence-transformers
+pydantic
