@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI IDE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="ide-container">
+        <div class="activity-bar">
+            <div class="activity-icon active" data-view="explorer" title="Explorer">📁</div>
+            <div class="activity-icon" data-view="vcs" title="AI Timeline">🕒</div>
+        </div>
+        <div class="sidebar-wrapper" id="sidebar-wrapper">
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-view active" id="view-explorer">
+                    <div class="sidebar-header"><span>EXPLORER</span><button id="open-folder-btn">📁</button></div>
+                    <div id="file-tree" class="file-tree"></div>
+                </div>
+                <div class="sidebar-view" id="view-vcs">
+                    <div class="sidebar-header"><span>AI TIMELINE</span></div>
+                    <div id="vcs-list" class="vcs-list"></div>
+                </div>
+            </div>
+            <div class="resizer" id="resizer-sidebar"></div>
+        </div>
+
+        <div class="editor-pane">
+            <div id="tabs" class="tab-bar"></div>
+            <div id="monaco-editor" class="monaco-container"></div>
+            <div id="diff-overlay" class="diff-overlay hidden">
+                <div class="diff-header"><span>AI Changes</span><button id="accept-ai">Accept</button><button id="reject-ai">Reject</button></div>
+                <div id="monaco-diff"></div>
+            </div>
+            <div class="terminal-pane">
+                <div class="terminal-header"><span>TERMINAL</span><button id="ai-fix-btn">🤖 Fix with AI</button></div>
+                <div id="terminal-output" class="terminal-output"></div>
+                <div class="terminal-input-area"><span style="color: #4CAF50;">$</span><input type="text" id="terminal-input" placeholder="bun run..." /></div>
+            </div>
+        </div>
+
+        <div class="resizer" id="resizer-chat"></div>
+
+        <div class="ai-pane" id="ai-pane">
+            <div id="chat-log" class="chat-log"></div>
+            <div id="slash-menu" class="slash-menu hidden">
+                <div class="slash-item" data-cmd="/fix">🐞 <b>/fix</b></div>
+                <div class="slash-item" data-cmd="/explain">📖 <b>/explain</b></div>
+            </div>
+            <div class="input-area">
+                <textarea id="prompt-input" placeholder="Ask AI... (Use @codebase)"></textarea>
+                <button id="send-btn">Send</button>
+                <button id="stop-btn" class="hidden">⏹ Stop</button>
+            </div>
+        </div>
+    </div>
+    <div class="status-bar">
+        <div class="status-left"><span id="status-branch">🤖 AI-VCS: Ready</span><span id="status-file">No file</span></div>
+        <div class="status-right"><span id="status-cursor">Ln 1, Col 1</span><span id="status-lang">TXT</span><span id="status-ai">● AI Online</span></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
